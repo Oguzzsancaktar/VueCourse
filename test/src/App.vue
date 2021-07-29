@@ -1,16 +1,46 @@
 <template>
   <div class="container">
     <Header title="Props Header Title" />
+    <Tasks @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
+import Tasks from "./components/Tasks.vue";
 
 export default {
   name: "App",
   components: {
     Header,
+    Tasks,
+  },
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: "Doctor Appointment",
+        day: "March 1st at 2:30pm",
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: "School mettinf",
+        day: "March 3st at 13:30pm",
+        reminder: true,
+      },
+      {
+        id: 3,
+        text: "food shoping",
+        day: "March 10st at 3:30pm",
+        reminder: false,
+      },
+    ];
   },
 };
 </script>
